@@ -6,9 +6,9 @@ const TrafficImages = ({ time, location }) => {
   const [trafficImage, setTrafficImage] = useState();
 
 
-  const checker = async () => {
+  const checker = () => {
     try {
-      await trafficData?.items[0]?.cameras.map((c) => {
+       trafficData?.items[0]?.cameras.map((c) => {
         if (
           Math.abs(
             location.label_location.latitude.toFixed(3) -
@@ -34,6 +34,8 @@ const TrafficImages = ({ time, location }) => {
   const trafficUrl = `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${time}`;
 
   useEffect(() => {
+    
+
     const fetchTrafficData = async () => {
       try {
         let { data: response } = await axios.get(trafficUrl);
@@ -43,17 +45,21 @@ const TrafficImages = ({ time, location }) => {
       }
     };
 
-   fetchTrafficData();
-   checker()
-    
+    fetchTrafficData();
+
   }, [time,location]);
-  console.log(trafficImage)
+
+  useEffect(() => {
+    checker()
+  },[trafficData])
+ 
+
   return (
     <div>
       {trafficImage ? (
         <img src={trafficImage} alt="" width="600" height="600" />
       ) : (
-        <h4>No Image Found... </h4>
+        <h4>No Image Found... Please select another location. </h4>
       )}
     </div>
   );

@@ -22,10 +22,10 @@ export default function SelectLabels({time, error}) {
   const handleChange = (event) => {
     
     setLocation(event.target.value);
-    
+
   };
-  
-  console.log(time)
+  console.log(location)
+
   const weatherUrl = `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?date_time=${time}`
 
   function forecast() {
@@ -39,20 +39,18 @@ export default function SelectLabels({time, error}) {
   useEffect(() => {
  
     const fetchWeatherData = async() => {
-      try{
+      
       let {data: response} = await axios.get(weatherUrl)
       setWeatherData(response)
-    } 
-   catch (err) {
-    console.log(err)
-  }
+   
 }   
 
     fetchWeatherData()
     forecast()
-  },[])
+    
+  },[time])
   
-console.log(weatherData)
+
 
   return (
     <div>
@@ -65,7 +63,7 @@ console.log(weatherData)
           value={location}
           label="Location"
           onChange={handleChange}
-          
+          placeholder={location.name}
           autoWidth="false"
           MenuProps={{
             PaperProps: { sx: { maxHeight: 200 }}

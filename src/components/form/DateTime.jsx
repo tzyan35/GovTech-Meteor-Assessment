@@ -23,7 +23,7 @@ export default function BasicDateTimePicker({loading}) {
       console.log(localTime)
     } catch (err){
         setError(err)
-        
+
      
       }
     }
@@ -33,8 +33,10 @@ export default function BasicDateTimePicker({loading}) {
       toLocalTime()
     },[value])
 
+console.log(dayjs())
   return (
     <div>
+     
       {error == "" ? <div>{error}</div> : ""} 
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       
@@ -55,7 +57,8 @@ export default function BasicDateTimePicker({loading}) {
        
 
       />
-      <Location time={localTime} loading={loading}/>
+       {value > dayjs() || value.$d < dayjs("2016-03-01T00:00")  ? <h4>Please input a valid date</h4>:  <Location time={localTime} loading={loading}/> }
+    
         {/* {value} */}
     </LocalizationProvider>
 
