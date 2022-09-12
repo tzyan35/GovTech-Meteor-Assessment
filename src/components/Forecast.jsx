@@ -4,6 +4,7 @@ const Forecast = ({ forecastInfo, location }) => {
   const [forecast, setForecast] = useState();
 
   function checkForecast() {
+     // eslint-disable-next-line array-callback-return
     forecastInfo.map((f) => {
       if (f.area === location.name) {
         setForecast(f.forecast);
@@ -14,6 +15,7 @@ const Forecast = ({ forecastInfo, location }) => {
 
   useEffect(() => {
     checkForecast();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, forecastInfo]);
 
   return (

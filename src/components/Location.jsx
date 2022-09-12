@@ -1,7 +1,6 @@
 import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useEffect, useState } from "react";
@@ -36,6 +35,7 @@ export default function SelectLabels({ time, error }) {
 
     fetchWeatherData();
     forecast();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time]);
 
   return (
@@ -64,7 +64,7 @@ export default function SelectLabels({ time, error }) {
                 );
               })}
           </Select>
-          {/* <FormHelperText>With label + helper text</FormHelperText> */}
+      
           {!location && <h3>Select a Location</h3>}
         </FormControl>
       ) : (

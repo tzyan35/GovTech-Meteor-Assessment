@@ -6,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useState, useEffect } from "react";
 import Location from "./Location";
-
+ // eslint-disable-next-line no-empty-pattern
 export default function BasicDateTimePicker({}) {
   const [value, setValue] = useState(dayjs());
   const [localTime, setLocalTime] = useState("");
@@ -31,6 +31,7 @@ export default function BasicDateTimePicker({}) {
 
   useEffect(() => {
     toLocalTime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (

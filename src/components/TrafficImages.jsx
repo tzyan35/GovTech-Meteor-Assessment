@@ -21,8 +21,10 @@ const TrafficImages = ({ time, location }) => {
           ) <= 0.05
         ) {
           setTrafficImage(c.image);
+          return null
         } else {
           console.log("error");
+          return null
         }
       });
     } catch (err) {
@@ -43,10 +45,12 @@ const TrafficImages = ({ time, location }) => {
     };
 
     fetchTrafficData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time, location]);
 
   useEffect(() => {
     checker();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trafficData]);
 
   return (
@@ -54,8 +58,8 @@ const TrafficImages = ({ time, location }) => {
       {trafficImage ? (
         <Zoom>
           <img
+            alt=""
             src={trafficImage}
-            alt="Traffic Image"
             width="600"
             height="600"
           />
