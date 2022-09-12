@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const TrafficImages = ({ time, location }) => {
   const [trafficData, setTrafficData] = useState();
   const [trafficImage, setTrafficImage] = useState();
 
-
   const checker = () => {
     try {
-       trafficData?.items[0]?.cameras.map((c) => {
+      trafficData?.items[0]?.cameras.map((c) => {
         if (
           Math.abs(
             location.label_location.latitude.toFixed(3) -
@@ -31,13 +30,9 @@ const TrafficImages = ({ time, location }) => {
     }
   };
 
-  
-
   const trafficUrl = `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${time}`;
 
   useEffect(() => {
-    
-
     const fetchTrafficData = async () => {
       try {
         let { data: response } = await axios.get(trafficUrl);
@@ -48,21 +43,24 @@ const TrafficImages = ({ time, location }) => {
     };
 
     fetchTrafficData();
-
-  }, [time,location]);
+  }, [time, location]);
 
   useEffect(() => {
-    checker()
-  },[trafficData])
- 
+    checker();
+  }, [trafficData]);
 
   return (
     <div>
       {trafficImage ? (
-          <Zoom>
-        <img src={trafficImage} alt="Traffic Image" width="600" height="600" transitionDuration="max"/>
+        <Zoom>
+          <img
+            src={trafficImage}
+            alt="Traffic Image"
+            width="600"
+            height="600"
+          />
         </Zoom>
-        ) : (
+      ) : (
         <h4>No Image Found... Please select another location. </h4>
       )}
     </div>

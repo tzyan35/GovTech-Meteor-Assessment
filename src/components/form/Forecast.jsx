@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-const Forecast = ({forecastInfo, location}) => {
-    const [forecast, setForecast] = useState()
+const Forecast = ({ forecastInfo, location }) => {
+  const [forecast, setForecast] = useState();
 
-    function checkForecast() {
-        forecastInfo.map((f)=>{
-            if(f.area === location.name){
-                setForecast(f.forecast)
-            } 
-        })
-    }
-    
+  function checkForecast() {
+    forecastInfo.map((f) => {
+      if (f.area === location.name) {
+        setForecast(f.forecast);
+      }
+    });
+  }
 
+  useEffect(() => {
+    checkForecast();
+  }, [location, forecastInfo]);
 
-    useEffect(()=> {
-        checkForecast()
-    },[location,forecastInfo])
-    
   return (
     <div>
-        <h4>Forecast: {forecast}</h4> 
-        
+      <h4>Forecast: {forecast}</h4>
     </div>
-  )
-}
+  );
+};
 
-export default Forecast
+export default Forecast;
