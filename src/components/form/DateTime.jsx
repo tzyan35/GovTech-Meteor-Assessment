@@ -11,23 +11,24 @@ import Location from "./Location";
 
 export default function BasicDateTimePicker({loading}) {
   const [value, setValue] = React.useState(dayjs());
-  const [startTime, setStartTime] = useState('');
   const [localTime, setLocalTime] = useState('');
   const [error,setError] = useState('')
 
-    // console.log(value.$d.toISOString().replace(".000Z",""))
+  
     function toLocalTime() {
       try {
-      setStartTime(new Date(value.$d).toISOString().replace(".000Z","") );
-
-      setLocalTime(startTime.split(':')[0] + "%3A" + startTime.split(':')[1] + "%3A" + startTime.split(':')[2])
-      } catch (err){
+      const offset = new Date(value.$d).getTimezoneOffset() * 60000;
+      const time = new Date((value.$d) - offset).toISOString().replace(".000Z","") 
+      setLocalTime(time.split(':')[0] + "%3A" + time.split(':')[1] + "%3A" + time.split(':')[2])
+      console.log(localTime)
+    } catch (err){
         setError(err)
+        
      
       }
     }
 
-    console.log(error)
+
     useEffect(()=>{
      
       toLocalTime()
