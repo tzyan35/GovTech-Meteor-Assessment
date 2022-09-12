@@ -7,6 +7,7 @@ const Forecast = ({ forecastInfo, location }) => {
     forecastInfo.map((f) => {
       if (f.area === location.name) {
         setForecast(f.forecast);
+        return f.forecast
       }
     });
   }
