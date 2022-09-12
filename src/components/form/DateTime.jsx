@@ -10,7 +10,7 @@ import Location from "./Location";
 
 
 export default function BasicDateTimePicker({loading}) {
-  const [value, setValue] = React.useState(dayjs());
+  const [value, setValue] = useState(dayjs());
   const [localTime, setLocalTime] = useState('');
   const [error,setError] = useState('')
 
@@ -30,7 +30,6 @@ export default function BasicDateTimePicker({loading}) {
 
 
     useEffect(()=>{
-     
       toLocalTime()
     },[value])
 
