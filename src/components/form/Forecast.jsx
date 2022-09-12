@@ -15,12 +15,8 @@ const Forecast = ({forecastInfo, location}) => {
 
     useEffect(()=> {
         checkForecast()
-    },[location])
+    },[location,forecastInfo])
     
-//     console.log(forecastInfo[0])
-
-
-
   return (
     <div>
         <h4>Forecast: {forecast}</h4> 
