@@ -53,3 +53,8 @@ Commits URL: https://github.com/tzyan35/GovTech-Meteor-Assessment/commits
 -	Assume that the API is always and will always be correct. The longitude and latitude of both the weather API and traffic API will always sync together.
 -	Assume that the difference of <= 0.05 is the most ideal for comparing the longitude and latitude of both weather and traffic API since a difference of <= 0.01 is too little and <= 0.1 is too general.
 
+## Deployment Process
+
+- I've decided to use Netlify because of its excellent user-experience and reduce load-time. Since there is no routing involved, Vercel (with Next.js) would be too heavy and the free Heroku dyno service takes too much time to render
+- Before deployment, I realised that my code had some warnings. I decided to use es-lint ignore-next-line to deactivate the warnings so that the application can be deployed smoothly.
+- I've connected Github with Netlify, so anytime I make changes in local host, I will push them to Github, and Netlify will automatically read the master branch and auto-deploy the newest version of the code for me.
