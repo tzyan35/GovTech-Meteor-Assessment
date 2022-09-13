@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import dayjs from "dayjs";
 
-const TrafficImages = ({ time, location }) => {
+const TrafficImages = ({ time, location, value }) => {
   const [trafficData, setTrafficData] = useState();
   const [trafficImage, setTrafficImage] = useState();
 
@@ -21,10 +22,10 @@ const TrafficImages = ({ time, location }) => {
           ) <= 0.05
         ) {
           setTrafficImage(c.image);
-          return null
+          return null;
         } else {
           console.log("error");
-          return null
+          return null;
         }
       });
     } catch (err) {
@@ -55,17 +56,14 @@ const TrafficImages = ({ time, location }) => {
 
   return (
     <div>
-      {trafficImage ? (
-        <Zoom>
-          <img
-            alt=""
-            src={trafficImage}
-            width="600"
-            height="600"
-          />
-        </Zoom>
+      {!trafficImage || value.$d > dayjs().$d ? (
+        <h4>
+          No Image Found... Please select another location or change the time.{" "}
+        </h4>
       ) : (
-        <h4>No Image Found... Please select another location. </h4>
+        <Zoom>
+          <img alt="" src={trafficImage} width="600" height="600" />
+        </Zoom>
       )}
     </div>
   );

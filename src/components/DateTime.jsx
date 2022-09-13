@@ -36,6 +36,7 @@ export default function BasicDateTimePicker({}) {
 
   return (
     <div>
+    
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateTimePicker
           renderInput={(props) => <TextField {...props} />}
@@ -46,13 +47,14 @@ export default function BasicDateTimePicker({}) {
             setValue(newValue);
           }}
           minDateTime={dayjs("2016-03-01T00:00")}
-          maxDateTime={dayjs()}
+          maxDateTime={dayjs().add(2, "Hour")}
           hideTabs
         />
-        {value > dayjs() || value.$d < dayjs("2016-03-01T00:00") ? (
+        {value > dayjs().add(2, "Hour") || value.$d < dayjs("2016-03-01T00:00") ? (
           <h4>Please input a valid date</h4>
         ) : (
-          <Location time={localTime} />
+          <Location time={localTime} value={value} />
+          
         )}
       </LocalizationProvider>
     </div>

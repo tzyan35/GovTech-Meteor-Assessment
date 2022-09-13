@@ -15,7 +15,7 @@ function App() {
       {!loading ? <div>Loading...</div>: null}
       {loading && (
         <div>
-          <h1> Weather Forecast & Traffic Cam </h1>
+          <h1 className="titleSentence"> Traffic Camera & 2 Hour Weather Forecast </h1>
  
         
         <DateTime/>

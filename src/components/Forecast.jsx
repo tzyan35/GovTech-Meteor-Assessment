@@ -1,14 +1,16 @@
+import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
+import "../index";
 
-const Forecast = ({ forecastInfo, location }) => {
+const Forecast = ({ forecastInfo, location, value }) => {
   const [forecast, setForecast] = useState();
 
   function checkForecast() {
-     // eslint-disable-next-line array-callback-return
+    // eslint-disable-next-line array-callback-return
     forecastInfo.map((f) => {
       if (f.area === location.name) {
         setForecast(f.forecast);
-        return f.forecast
+        return f.forecast;
       }
     });
   }
@@ -20,7 +22,11 @@ const Forecast = ({ forecastInfo, location }) => {
 
   return (
     <div>
-      <h4>Forecast: {forecast}</h4>
+      {!forecast || value.$d > dayjs().$d ? (
+        <h4 className="forecast">2 Hour Forecast: {forecast}</h4>
+      ) : (
+        <h4>Past Forecast: {forecast}</h4>
+      )}
     </div>
   );
 };

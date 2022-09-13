@@ -8,7 +8,7 @@ import axios from "axios";
 import TrafficImages from "./TrafficImages";
 import Forecast from "./Forecast";
 
-export default function SelectLabels({ time, error }) {
+export default function SelectLabels({ time, value }) {
   const [location, setLocation] = React.useState("");
   const [weatherData, setWeatherData] = useState({});
   const [forecastInfo, setForecastInfo] = useState();
@@ -64,14 +64,22 @@ export default function SelectLabels({ time, error }) {
                 );
               })}
           </Select>
-      
+
           {!location && <h3>Select a Location</h3>}
         </FormControl>
       ) : (
         <h3>Select a Date and Time</h3>
       )}
-      {location && <Forecast location={location} forecastInfo={forecastInfo} />}
-      {location && <TrafficImages location={location} time={time} />}
+      {location && (
+        <Forecast
+          location={location}
+          forecastInfo={forecastInfo}
+          value={value}
+        />
+      )}
+      {location && (
+        <TrafficImages location={location} time={time} value={value} />
+      )}
     </div>
   );
 }
