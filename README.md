@@ -1,12 +1,18 @@
-# Getting Started with Create React App
+## Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deployed URL: https://weathertrafficimages.netlify.app/
 
-## Available Scripts
+### How to run the source code on local server 
 
-In the project directory, you can run:
+1. Clone the repository by clicking on Code -> Downlaod ZIP.
+2. Unpack the ZIP file and open source code using Visual Studio Code or any preferred code editor.
+3. Navigate to the root directory (./govtech) in the terminal.
+4. Type "npm install" in the terminal to install all dependencies in the package.json file.
+5. Type "npm run start" to start the application on your local server.
 
-### `npm start`
+## Notes 
+
+### 
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
